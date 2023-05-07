@@ -11,3 +11,4 @@ C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.cspr
 C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.csproj.CopyComplete
 C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.exe
 C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.pdb
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.login.resources

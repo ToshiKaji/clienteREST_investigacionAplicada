@@ -12,12 +12,15 @@ using Newtonsoft.Json.Linq;
 
 namespace ClienteREST
 {
+   
     public partial class Form1 : Form
     {
+        public string token { get; set; }
         public Form1()
         {
             InitializeComponent();
         }
+
         private bool ValidarCampos()
         {
             bool valido = true;
@@ -39,7 +42,10 @@ namespace ClienteREST
 
             private void Form1_Load(object sender, EventArgs e)
         {
-           
+            button2.Enabled = false;
+            login login = new login();
+            login.Close();
+            
 
 
         }
@@ -53,31 +59,37 @@ namespace ClienteREST
 
 
 
-                    string url = "https://jsonplaceholder.typicode.com/posts/" + textBox1.Text; //url con el que se realiza la consulta 
-                                                                                                //client.DefaultRequestHeaders.Add("Authorization","TOKEN");
-                    client.DefaultRequestHeaders.Clear();
-
+                    string url = "https://cupones-apirest.herokuapp.com/api/getCuponById/" + textBox1.Text; //url con el que se realiza la consulta 
+                                                                                                            //client.DefaultRequestHeaders.Add("Authorization","TOKEN");
+                                                                                                            //client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
                     var response = client.GetAsync(url).Result;
 
                     var res = response.Content.ReadAsStringAsync().Result;
-                    dynamic r = JObject.Parse(res);
-                    if (res !="{}")
+                    //Console.WriteLine(res);
+                    dynamic jsonrespuesta = JObject.Parse(res);
+                    var r = jsonrespuesta["body"];
+                    Console.WriteLine(r);
+                    if (r.Count>0)
                     {
-                       // Console.WriteLine();
-                        txtnombre.Text = r.nombre;
-                        txtdui.Text = r.dui;
-                        txtfechaexp.Text = r.fecha_limite;
-                        if (r.estado == 0)
+                        // Console.WriteLine();
+                        txtempresa.Text = r[0].empresa.ToString();
+                        txtfechaexp.Text = r[0].fecha_limite.ToString();
+                        if (r[0].estado == 0)
                         {
                             txtestadocanjeo.Text = "Sin canjear" ;
+                            button2.Enabled = true;
                         }
-                        else if(r.estado == 1)
+                        else if(r[0].estado == 1)
                         {
                             txtestadocanjeo.Text = "Canjeado";
+                            button1.Enabled = true;
+                            button2.Enabled = false;
                         }
-                        txtcondiciones.Text = r.descripcion;
-                        txtcondiciones.Text = r.condiciones;
-
+                        txtdescripcion.Text = r[0].descripcion.ToString();
+                        txtcondiciones.Text = r[0].condiciones.ToString();
+                       
+                        Console.WriteLine(r);
                     }
                     else
                     {
@@ -91,9 +103,9 @@ namespace ClienteREST
         {
             using (var client = new HttpClient())
             {
-                string url = "https://jsonplaceholder.typicode.com/posts/1"; //url con el que se realiza la consulta 
-                //client.DefaultRequestHeaders.Add("Authorization","TOKEN");
-                client.DefaultRequestHeaders.Clear();
+                string url = "https://cupones-apirest.herokuapp.com/api/actualizar-cupon/"+textBox1.Text; //url con el que se realiza la consulta 
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer "+token);
+                //client.DefaultRequestHeaders.Clear();
                 string parametros = "{'estado':'1',}";
                 dynamic jSonstring = JObject.Parse(parametros);
 
@@ -103,7 +115,21 @@ namespace ClienteREST
 
                 var res = response.Content.ReadAsStringAsync().Result;
                 dynamic r = JObject.Parse(res);
-                
+                Console.WriteLine(r);
+                if (r.status != 400)
+                {
+                    MessageBox.Show("Ocurrio un error, intente mas tarde");
+                }
+                else
+                {
+                    MessageBox.Show("Operacion realizada con exito");
+                    txtcondiciones.Clear();
+                    txtdescripcion.Clear();
+                    txtempresa.Clear();
+                    txtestadocanjeo.Clear();
+                    txtfechaexp.Clear();
+                    button1.Enabled = true;
+                }
 
             }
         }
