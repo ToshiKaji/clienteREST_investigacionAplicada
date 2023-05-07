@@ -1,0 +1,13 @@
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\bin\Debug\ClienteREST.exe.config
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\bin\Debug\ClienteREST.exe
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\bin\Debug\ClienteREST.pdb
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.Form1.resources
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.Properties.Resources.resources
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.csproj.GenerateResource.cache
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.csproj.CopyComplete
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.exe
+C:\Users\Usuario\source\repos\ClienteREST\ClienteREST\obj\Debug\ClienteREST.pdb
